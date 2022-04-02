@@ -14,9 +14,4 @@ jobs:
         server: ${{ secrets.IMTAQ_HOST }}
         username: ${{ secrets.IMTAQ_FTP_USER }}
         password: ${{ secrets.IMTAQ_FTP_PASS }}
-        dry-run: true
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          fileToExclude.txt
+
