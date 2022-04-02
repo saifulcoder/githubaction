@@ -1,0 +1,23 @@
+on: push
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2
+
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      with:
+        server: ${{ secrets.IMTAQ_HOST }}
+        username: ${{ secrets.IMTAQ_FTP_USER }}
+        password: ${{ secrets.IMTAQ_FTP_PASS }}
+        server-dir: ${{ secret.IMTAQ_PATH }}
+        dry-run: true
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          fileToExclude.txt
