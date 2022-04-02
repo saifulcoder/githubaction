@@ -1,0 +1,22 @@
+on:
+  push:
+    branches: [ main ]
+name: 🚀 IMTAQ website on push
+jobs:
+  web-deploy:
+    name: 🎉 Auto deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v3
+
+    - name: 📂 Sync files
+      uses: Burnett01/rsync-deployments@5.2
+      with:
+        switches: -avzr --delete --exclude=".git" --exclude=".github"
+        path: /
+        remote_path: ${{ secrets.IMTAQ_PATH }}
+        remote_host: ${{ secrets.IMTAQ_HOST }}
+        remote_port: 22
+        remote_user: root
+        remote_key: ${{ secrets.IMTAQ_KEY }}
