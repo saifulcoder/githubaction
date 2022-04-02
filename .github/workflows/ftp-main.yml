@@ -14,7 +14,6 @@ jobs:
         server: ${{ secrets.IMTAQ_HOST }}
         username: ${{ secrets.IMTAQ_FTP_USER }}
         password: ${{ secrets.IMTAQ_FTP_PASS }}
-        server-dir: ${{ secret.IMTAQ_PATH }}
         dry-run: true
         exclude: |
           **/.git*
